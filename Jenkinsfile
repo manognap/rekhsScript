@@ -1,7 +1,7 @@
 @Library('shared_library')_
 	
 
-	node {
+	node (label:'salve_jenkins') {
 	   
 	   
 	   stage('Setup and initialization') { 
