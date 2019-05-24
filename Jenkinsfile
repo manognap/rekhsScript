@@ -1,9 +1,17 @@
 @Library('shared_library')_
 
 node {
-   def mvnHome
-   def sonarCloudProperties
-   def sonarQubeProperties
+
+try{
+
+ stage('Job Started Notification'){
+      emailext (
+      subject: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
+      body: """<p>STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]':</p>
+        <p>Check console output at "<a href="${env.BUILD_URL}">${env.JOB_NAME} [${env.BUILD_NUMBER}]</a>"</p>""",
+      recipientProviders: [[$class: 'DevelopersRecipientProvider']]
+    )
+    }
    
    stage('Initialization') { 
        
@@ -49,5 +57,30 @@ node {
     stage('Deploy Artifacts'){
         deployArtifacts "artifactory", "./target/*.war", "localsnapshot"
     }
+    
+    stage('Job Success Notification'){
+      emailext (
+      subject: "SUCCESSFUL: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
+      body: """<p>SUCCESSFUL: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]':</p>
+        <p>Check console output at "<a href="${env.BUILD_URL}">${env.JOB_NAME} [${env.BUILD_NUMBER}]</a>"</p>""",
+      recipientProviders: [[$class: 'DevelopersRecipientProvider']]
+    )
+    }
+    }
+    
+    catch(e){
+    
+    stage('Job Failure Notification'){
+      emailext (
+      subject: "FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
+      body: """<p>FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]':</p>
+        <p>Check console output at "<a href="${env.BUILD_URL}">${env.JOB_NAME} [${env.BUILD_NUMBER}]</a>"</p>""",
+      recipientProviders: [[$class: 'DevelopersRecipientProvider']]
+      )
+    }
+    
+   }
+
+}
 
 }
