@@ -5,7 +5,7 @@ node {
    def sonarCloudProperties
    def sonarQubeProperties
    
-   stage('Setup and initialization') { 
+   stage('Initialization') { 
        
     // Get some code from a GitHub repository
    git 'https://github.com/RekhaPrathap/MVC.git'
@@ -31,7 +31,7 @@ node {
     }
     
     
-    stage("SonarQube Quality Gate") { 
+    stage("SonarQube Quality Gate pass") { 
                 withSonarQubeEnv('sonar'){
         timeout(time: 1, unit: 'MINUTES') { 
            def qg = waitForQualityGate() 
