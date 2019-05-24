@@ -14,7 +14,7 @@ try{
     }
     
    stage('Setup and initialization') { 
-       setup "MAVEN_HOME", "https://github.com/RekhaPrathap/MVC.git"
+       setup "Maven_HOME", "https://github.com/RekhaPrathap/MVC.git"
    }
     
     stage('Quality check with SonarQube'){
