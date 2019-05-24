@@ -2,33 +2,25 @@
 	
 
 	node {
-	   def mvnHome
-	   def sonarCloudProperties
-	   def sonarQubeProperties
+	   
 	   
 	   stage('Setup and initialization') { 
+	   setup "Maven_HOME", "https://github.com/RekhaPrathap/MVC.git"
+	   }
 	       
-	    // Get some code from a GitHub repository
-	   git 'https://github.com/RekhaPrathap/MVC.git'
-	      
-	    // Get the Maven tool
-	    mvnHome = tool 'Maven_HOME'
-	    
+	   
 	      
 	    // Sonar cloud properties
-	    sonarCloudProperties = '-Dsonar.projectKey=RekhaPrathap_MVC -Dsonar.organization=rekhaprathap-github -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=ae0fc3ea0e7b5b3fa0cdf8b2cff85756cdaed572'
+	    //sonarCloudProperties = '-Dsonar.projectKey=RekhaPrathap_MVC -Dsonar.organization=rekhaprathap-github -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=ae0fc3ea0e7b5b3fa0cdf8b2cff85756cdaed572'
 	      
 	    // SonarQube properties
-	    sonarQubeProperties = '-Dsonar.host.url=http://23.100.87.70:9000'
-	   }
+	  //  sonarQubeProperties = '-Dsonar.host.url=http://23.100.87.70:9000'
+	  // }
 	  
 	    
 	    stage('Quality check with SonarQube'){
-	        withSonarQubeEnv('sonar'){
-	        
-	            sh "'${mvnHome}/bin/mvn' clean package sonar:sonar"
-	    
-	        }    
+	    sonarQube "sonar", "Maven_HOME"
+	       
 	    }
 	    
 	    
