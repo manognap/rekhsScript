@@ -4,7 +4,7 @@
 	node (label:'slave') {
 	   
 	   
-	   stage('Setup and initialization') { 
+	   stage('initialization') { 
 	   setup "Maven_HOME", "https://github.com/RekhaPrathap/MVC.git"
 	   }
 	       
