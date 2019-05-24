@@ -11,7 +11,7 @@ node {
    git 'https://github.com/RekhaPrathap/MVC.git'
       
     // Get the Maven tool
-    mvnHome = tool 'Maven_HOME''
+    mvnHome = tool 'Maven_HOME'
     
       
     // Sonar cloud properties
