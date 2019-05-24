@@ -1,7 +1,7 @@
 @Library('shared_library')_
 	
 
-	node (label:'slave') {
+	node  {
 	   
 		
 		try{
