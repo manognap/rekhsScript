@@ -1,0 +1,12 @@
+
+@Library('shared_library')_
+
+node(label:'salve') {
+  
+  stage('Download Artifacts'){
+    
+    downloadArtifacts "artifactory", "./localsnapshot/*.war", "/var/lib/jenkins/workspace/MVC_Pipeline/"
+    
+  }
+  
+}
