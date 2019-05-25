@@ -41,7 +41,7 @@
 	    }
 	             
 	    stage('Build and deploy image to hub'){
-	        buildDockerImage  "rekha/project"
+	        buildDockerImage  "r1043864/project"
 	    }
 	    
 	    stage('Deploy Artifacts'){
