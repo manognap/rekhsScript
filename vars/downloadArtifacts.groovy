@@ -1,5 +1,5 @@
 def call(String artifactoryServerName, String source, String destination){
-
+echo "Source : ${source} and destination : ${destination}"
  def SERVER_ID = "${artifactoryServerName}" 
         def server = Artifactory.server SERVER_ID
         def downloadFile = 
