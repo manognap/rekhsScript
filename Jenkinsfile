@@ -40,7 +40,7 @@
 	    qualityGate "sonar"
 	    }
 	             
-	    stage('Build docker image for war file'){
+	    stage('Build and deploy image to hub'){
 	        buildDockerImage  "rekha/project"
 	    }
 	    
