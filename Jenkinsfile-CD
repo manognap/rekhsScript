@@ -1,6 +1,6 @@
 @Library('shared_library')_
 
-node(label:'salve') {
+node(label:'slave') {
   
   stage('Download Artifacts'){
     
