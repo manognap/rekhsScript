@@ -1,5 +1,5 @@
-def call(String artifactoryServerName, String artifact, String repo){
-        echo 'inside artifact script'
+def call(String artifactoryServerName, String artifactDeployed, String repo){
+        echo 'Deploying artifacts to Artifactory..'
         def SERVER_ID = "${artifactoryServerName}" 
         def server = Artifactory.server SERVER_ID
         def uploadFile = 
@@ -7,14 +7,14 @@ def call(String artifactoryServerName, String artifact, String repo){
         {
         "files": [
             {
-                "pattern": "${artifact}",
-                "target": "${repo}/${BUILD_NUMBER}/"
+                "pattern": "${artifactDeployed}",
+                "target": "${repo}/${env.BUILD_NUMBER}/"
             }
         ]
         }
         """
-        echo 'below pattern and target artifact script'
         def buildInfo = Artifactory.newBuildInfo() 
         buildInfo=server.upload(uploadFile) 
         server.publishBuildInfo(buildInfo)
+        echo "Artifacts deployed to artifactory!"
     }
