@@ -1,7 +1,7 @@
 @Library('shared_library')_
 	
 
-	node  {
+	node(label:'slave')  {
 	   
 		
 		try{
@@ -41,7 +41,7 @@
 	    }
 	             
 	    stage('Build docker image for war file'){
-	        dockerImage "docker build -t rekha/project:${BUILD_NUMBER} ."
+	        buildDockerImage  "rekha/project"
 	    }
 	    
 	    stage('Deploy Artifacts'){
