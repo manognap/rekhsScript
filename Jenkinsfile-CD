@@ -1,0 +1,11 @@
+@Library('shared_library')_
+
+node(label:'salve') {
+  
+  stage('Download Artifacts'){
+    
+    downloadArtifacts "artifactory", "local-snapshot/${env.BUILD_NUMBER}/*.war", "./artifacts/"
+    
+  }
+  
+}
