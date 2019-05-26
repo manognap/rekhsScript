@@ -4,7 +4,7 @@ node(label:'slave') {
   
   stage('Download Artifacts'){
     
-    downloadArtifacts "artifactory", "local-snapshot/${env.BUILD_NUMBER}/*.war", "./artifacts/"
+    downloadArtifacts "artifactory", "localsnapshot/${env.BUILD_NUMBER}/*.war", "./artifacts/"
     
   }
   
