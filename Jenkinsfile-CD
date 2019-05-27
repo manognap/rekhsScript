@@ -10,7 +10,7 @@ node(label:'slave') {
   
   stage('SCP-ing war file to tomcat server')
   {
-  sh "scp /var/lib/jenkins/workspace/CDPipeline/artifacts/${env.BUILD_NUMBER}/*.war root@104.211.209.214:/usr/local/tomcat/webapps"
+  sh "scp /var/lib/jenkins/workspace/CDPipeline/artifacts/${env.BUILD_NUMBER}/*.war root@104.211.209.214:/var/lib/tomcat8/webapps"
   
   }  
   
